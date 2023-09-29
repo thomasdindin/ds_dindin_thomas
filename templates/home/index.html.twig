@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Symfofilm{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+
+    .row {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+</style>
+
+<div class="example-wrapper">
+    <h1>Page d'accueil</h1>
+    <p>Bienvenue sur Symfofilm !</p>
+    <p>Voici les films à l'affiche:</p>
+
+    <ul>
+        {% for film in films %}
+            <li>
+                <a href="{{path('app_info_film', {id : film.id})}}">{{ film.titre }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <div class="row">
+        <a href="{{path('app_ajout_film')}}">Ajouter un film</a>
+        <a href="{{path('app_ajout_projection')}}">Ajouter une projection</a>
+    </div>
+
+</div>
+{% endblock %}
